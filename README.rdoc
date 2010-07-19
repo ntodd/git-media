@@ -11,7 +11,16 @@ Setup the attributes filter settings.
 	$ git config filter.media.clean "git-media filter-clean"
 	$ git config filter.media.smudge "git-media filter-smudge"
 
-Setup the .gitattributes file to map extensions to the filter.
+=== Using faster shell scripts
+
+There is a separate version of the filter scripts, writtin in bash shell script.
+These are much faster than the ruby version, but may not support all the features.
+To use them, run these commands:
+
+	$ git config filter.media.clean "git-media filter-clean"
+	$ git config filter.media.smudge "git-media filter-smudge"
+
+Next, setup the .gitattributes file to map extensions to the filter.
 
 	(in repo - once)
 	$ echo "*.mov filter=media" > .gitattributes  

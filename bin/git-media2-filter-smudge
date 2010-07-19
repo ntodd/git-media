@@ -1,0 +1,20 @@
+#!/bin/sh
+MEDIA_DIR="$GIT_DIR/media/objects"
+TMP="/tmp/$$.$RANDOM"
+cat > $TMP
+SIZE=`du -b $TMP|cut -f1`
+if [ $SIZE -eq 41 ]; then
+ HASH=`cat $TMP`
+ if [ -f "$MEDIA_DIR/$HASH" ]; then
+   cat "$MEDIA_DIR/$HASH"
+   echo recovering media : $HASH 1>&2
+ else
+   echo $HASH
+   echo Need to run \'git media sync\'! missing: $HASH 1>&2
+ fi
+else
+ cat $TMP
+ echo reading input directly 1>&2
+fi
+
+rm -rf $TMP

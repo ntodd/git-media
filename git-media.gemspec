@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{git-media}
-  s.version = "0.1.1"
+  s.version = "0.1.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Scott Chacon"]
-  s.date = %q{2009-06-10}
+  s.authors = ["Scott Chacon", "David R"]
+  s.date = %q{2010-07-19}
   s.default_executable = %q{git-media}
   s.email = %q{schacon@gmail.com}
   s.executables = ["git-media"]
@@ -22,6 +22,8 @@ Gem::Specification.new do |s|
      "Rakefile",
      "VERSION",
      "bin/git-media",
+	 "bin/git-media2-filter-clean",
+     "bin/git-media2-filter-smudge",
      "git-media.gemspec",
      "lib/git-media/clear.rb",
      "lib/git-media/filter-clean.rb",

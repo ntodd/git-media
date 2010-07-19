@@ -1,0 +1,20 @@
+#!/bin/sh
+MEDIA_DIR="$GIT_DIR/media/objects"
+
+if [ ! -d "$MEDIA_DIR" ]; then
+  mkdir -p "$MEDIA_DIR"
+fi
+
+TMP="/tmp/$$.$RANDOM"
+cat > $TMP
+SIZE=`du -b $TMP|cut -f1`
+if [ $SIZE -eq 41 ]; then
+  echo Need to run \'git media sync\'! unexpanded: `cat $TMP` 1>&2
+fi
+HASH=`sha1sum $TMP|cut -f1 -d\ `
+echo $HASH
+mv $TMP "$MEDIA_DIR/$HASH"
+#echo saving media : $HASH 1>&2
+#echo -n . 1>&2
+
+
