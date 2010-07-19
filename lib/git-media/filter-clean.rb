@@ -31,7 +31,8 @@ module GitMedia
       FileUtils.mv(tempfile.path, media_file)
 
       elapsed = Time.now - start
-      STDERR.puts('Saving media : ' + hx + ' : ' + elapsed.to_s)
+	  STDERR.print(".")
+      #STDERR.puts('Saving media : ' + hx + ' : ' + elapsed.to_s)
     end
 
   end
