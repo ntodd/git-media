@@ -44,7 +44,8 @@ module GitMedia
       end
 
       def get_unpushed(files)
-        keys = @s3.list_bucket(@bucket).map { |f| f[:key] }
+		keys = Array.new
+       	@s3.incrementally_list_bucket(@bucket, 'max-keys'=>10000) { |res| keys.concat(res[:contents].map { |f| f[:key] } ) } 
         files.select do |f|
           !keys.include?(f)
         end
