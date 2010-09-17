@@ -4,6 +4,16 @@ require 'git-media/transport/local'
 require 'git-media/transport/s3'
 require 'git-media/transport/scp'
 
+# Warning: Hacky - Removes annoying SSL warning
+class Net::HTTP
+  alias_method :old_initialize, :initialize
+  def initialize(*args)
+    old_initialize(*args)
+    @ssl_context = OpenSSL::SSL::SSLContext.new
+    @ssl_context.verify_mode = OpenSSL::SSL::VERIFY_NONE
+  end
+end
+
 module GitMedia
 
   def self.get_media_buffer
